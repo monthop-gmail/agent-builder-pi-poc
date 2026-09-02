@@ -1,0 +1,29 @@
+{
+  "name": "agent-builder-pi-poc",
+  "version": "0.1.0",
+  "description": "PoC: build agents from a runtime-neutral Agent Manifest and execute them on the Pi Agent Runtime",
+  "type": "module",
+  "bin": {
+    "agent-builder": "./bin/agent-builder.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "cli": "tsx cli/index.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "0.84.4",
+    "@earendil-works/pi-coding-agent": "0.84.4",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/server-filesystem": "^2026.8.31",
+    "yaml": "^2.6.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

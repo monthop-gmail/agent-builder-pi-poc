@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "agent-manifest.schema.json",
+  "title": "Agent Manifest",
+  "description": "Runtime-neutral agent manifest for the Agent Builder (apiVersion agent/v1).",
+  "type": "object",
+  "required": ["apiVersion", "metadata", "spec"],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": { "const": "agent/v1" },
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Lowercase kebab-case agent name."
+        },
+        "description": { "type": "string" }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "required": ["model", "system", "runtime"],
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "object",
+          "required": ["provider", "id"],
+          "additionalProperties": false,
+          "properties": {
+            "provider": { "type": "string", "minLength": 1 },
+            "id": { "type": "string", "minLength": 1 }
+          }
+        },
+        "system": {
+          "type": "object",
+          "required": ["instructions"],
+          "additionalProperties": false,
+          "properties": {
+            "instructions": { "type": "string", "minLength": 1 }
+          }
+        },
+        "tools": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "skills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "mcp": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "runtime": {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

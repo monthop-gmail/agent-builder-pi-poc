@@ -1,0 +1,28 @@
+apiVersion: agent/v1
+
+metadata:
+  name: researcher
+  description: Research agent
+
+spec:
+  model:
+    provider: anthropic
+    id: claude-sonnet-4-5
+
+  system:
+    instructions: |
+      You are a research agent.
+      Find reliable information and summarize it.
+      Cite the source for every claim.
+
+  tools:
+    - web_search
+
+  skills:
+    - research
+
+  mcp:
+    - filesystem
+
+  runtime:
+    type: pi

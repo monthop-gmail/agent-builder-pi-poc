@@ -1,0 +1,25 @@
+apiVersion: agent/v1
+
+metadata:
+  name: analyst
+  description: Quantitative analyst agent
+
+spec:
+  model:
+    provider: anthropic
+    id: claude-sonnet-4-5
+
+  system:
+    instructions: |
+      You are an analyst agent.
+      Show your data, your calculation, and your conclusion separately.
+
+  tools:
+    - calculator
+    - web_search
+
+  skills:
+    - analyst
+
+  runtime:
+    type: mock

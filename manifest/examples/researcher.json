@@ -1,0 +1,17 @@
+{
+  "apiVersion": "agent/v1",
+  "metadata": {
+    "name": "researcher",
+    "description": "Research agent running on GLM via the Z.ai provider"
+  },
+  "spec": {
+    "model": { "provider": "zai", "id": "glm-4.7" },
+    "system": {
+      "instructions": "You are a research agent. Answer concisely and cite sources when you use web_search."
+    },
+    "tools": ["web_search"],
+    "skills": ["research"],
+    "mcp": ["filesystem", "collab"],
+    "runtime": { "type": "pi" }
+  }
+}

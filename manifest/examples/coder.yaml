@@ -1,0 +1,24 @@
+apiVersion: agent/v1
+
+metadata:
+  name: coder
+  description: Coding agent that verifies its arithmetic
+
+spec:
+  model:
+    provider: anthropic
+    id: claude-sonnet-4-5
+
+  system:
+    instructions: |
+      You are a coding agent.
+      Write the smallest correct change and explain how to verify it.
+
+  tools:
+    - calculator
+
+  skills:
+    - coder
+
+  runtime:
+    type: pi
